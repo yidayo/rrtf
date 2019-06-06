@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>注册页</title>
+<link href="../c/base.css" rel="stylesheet" type="text/css">
+<link href="../c/toefl.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../j/jQuery.js"></script>
+<script src="login-register/../j/jquery.min.js"></script>
+</head>
+
+<body>
+	<div class="doc1180">
+		<div class="header">
+			<div class="logo">
+				<a href="####"><img src="../i/logo.png"></a>
+			</div>
+		</div>
+	</div>
+	<div class="menu">
+		<div class="doc1180">
+			<div class="menuLink">
+				<ul class="fn-clear">
+					<li><a href="/">首页</a></li>
+					<li><a href="###">托福人</a></li>
+					<li><a href="###">公开课</a></li>
+					<li><a href="###">群组聊</a></li>
+					<li><a href="###">自习室</a></li>
+					<li><a href="###">福利城堡</a></li>
+				</ul>
+			</div>
+			<div class="fenxiang">
+				<a href="#" class="weibo"><img src="../i/weibo.png"></a> <a
+					href="#" class="weixin"><img src="../i/weixin.png"></a>
+			</div>
+		</div>
+	</div>
+	<div class="doc1180">
+		<div class="login">
+			<div class="login_left">
+				<h3 class="login_h3">新用户注册</h3>
+				<div>
+					<span class="tipSuccess" th:text="${success}"></span> <span
+						class="tip" th:text="${tip}"></span>
+				</div>
+				<div>
+					<span id="tipUsername"></span>
+				</div>
+				<form th:action="@{/register}" onSubmit="return checkForm()"
+					method="post">
+
+					<div class="login_sr">
+						<input type="text" name="username" onBlur="checkUserName()"
+							onfocus="tipUserName()" id="userName" class="login_inputYhm"
+							th:value="${username}" placeholder="用户名">
+					</div>
+					<div>
+						<span id="tipPassword"></span>
+					</div>
+					<div class="login_sr">
+						<input type="password" name="password" onBlur="checkPassword()"
+							id="userPasword" onfocus="tipPassword()" class="login_inputMm"
+							th:value="${password}" placeholder="密码">
+					</div>
+					<div>
+						<span id="tipConPassword"></span>
+					</div>
+					<div class="login_sr">
+						<input type="password" name="rePassword" id="userConfirmPasword"
+							onBlur="ConfirmPassword()" class="login_inputMm"
+							th:value="${password}" placeholder="确认密码">
+					</div>
+					<div>
+						<span class="error" id="code" th:text="${tipCode}"></span>
+					</div>
+					<div class="login_sr fn-clear">
+						<input type="text" name="userCode" class="login_inputYzm"
+							onfocus="inCode()" placeholder="验证码不区分大小写">
+						<div class="login_inputYzmPic">
+							<img src="/user/getImage.htm" class="reloadImage"
+								id="reloadImage" width="100" height="40">
+						</div>
+						<a href="javaScript:;" class="login_inputYzmH reloadImage">看不清，换一张</a>
+					</div>
+					<div class="login_xieyi">
+						<input type="checkbox" id="protocol"
+							style="margin-right: 10px; vertical-align: middle;">我同意<a
+							href="###">《人人托福网服务协议》</a>
+					</div>
+					<div>
+						<input type="submit" id="button" disabled="disabled"
+							class="login_Button" value="注册">
+					</div>
+				</form>
+				<div class="login_zcymm">
+					<span>已有帐号？</span><a href="login.html">马上登录</a><a href="../forget-password/index.html"
+						class="login_zhmm">找回密码</a>
+				</div>
+			</div>
+			<div class="login_right">
+				<div class="login_rightH3">您也可以使用以下方式登录：</div>
+				<div class="login_sanfang">
+					<a href="###"><img src="../i/login_wb.png">新浪微博</a>
+				</div>
+				<div class="login_sanfang">
+					<a href="###"><img src="../i/login_qq.png">QQ登录</a>
+				</div>
+				<div class="login_sanfang">
+					<a href="###"><img src="../i/login_qw.png">腾讯微博</a>
+				</div>
+				<div class="login_sanfang">
+					<a href="###"><img src="../i/login_rr.png">人人网</a>
+				</div>
+				<div class="login_shouquan">
+					授权后表明你已同意 <a href="###">《人人托福网服务协议》</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="flink">
+		<div class="flinkTop"></div>
+		<div class="flinkBody">
+			<h3>友情链接</h3>
+			<ul>
+				<li>友情连接友情连接</li>
+				<li>友情连接友情连接</li>
+				<li>友情连接友情连接</li>
+				<li>友情连接友情连接</li>
+				<li>友情连接友情连接</li>
+				<li>友情连接友情连接</li>
+				<li>友情连接友情连接</li>
+			</ul>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="doc1180">
+			<div class="footerLink">
+				<a href="###">人人托福</a>| <a href="###">联系我们</a>| <a href="###">招聘信息</a>|
+				<a href="###">合作媒体</a>| <a href="###">意见反馈</a>| <a href="###">版权说明</a>
+			</div>
+			<div class="footerTxet">©2014 – xuanke.com All rights reserved.
+				京ICP备14022672号-1</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		function checkForm() {
+			var nametip = checkUserName();
+			var passtip = checkPassword();
+			var conpasstip = ConfirmPassword();
+			return nametip && passtip && conpasstip;
+		}
+
+		//用户名规范提示
+		function tipUserName() {
+			var errname = document.getElementById('tipUsername');
+			errname.innerHTML = "提示：用户名中英文数字以及下划线等字符，字符长度3-20字符，用户名不能重复。"
+			errname.className = "tipUser"
+		}
+
+		//验证用户名   
+		function checkUserName() {
+			var username = document.getElementById('userName');
+			var errname = document.getElementById('tipUsername');
+			var pattern = /^[\w+&@#$%*~]{3,20}$/;
+			if (username.value.length == 0) {
+				errname.innerHTML = "提示：用户名不能为空"
+				errname.className = "error"
+				return false;
+			} else if (!pattern.test(username.value)) {
+				errname.innerHTML = "提示：用户名不合规范"
+				errname.className = "error"
+				return false;
+			} else {
+				var username = $("#userName").val();
+				$.post("checkUsername?username=" + username, function(data) {
+					if (data == true) {
+						errname.innerHTML = "提示：用户名可用"
+						errname.className = "success";
+					} else {
+						errname.innerHTML = "提示：您输入的用户名已被注册，请重新输入"
+						errname.className = "error";
+					}
+				})
+				return true;
+			}
+		}
+
+		//密码规范提示
+		function tipPassword() {
+			var errPasswd = document.getElementById('tipPassword');
+			errPasswd.innerHTML = "提示：密码由中英文数字以及下划线等字符，字符长度8-20字符。"
+			errPasswd.className = "tipUser"
+		}
+
+		//验证密码   
+		function checkPassword() {
+			var userpasswd = document.getElementById('userPasword');
+			var errPasswd = document.getElementById('tipPassword');
+			var pattern = /^[\w+&@#$%*~]{8,20}$/;
+			if (userpasswd.value.length == 0) {
+				errPasswd.innerHTML = "提示：密码不能为空"
+				errPasswd.className = "error"
+				return false;
+			}
+			if (!pattern.test(userpasswd.value)) {
+				errPasswd.innerHTML = "提示：密码不合规范"
+				errPasswd.className = "error"
+				return false;
+			} else {
+				errPasswd.innerHTML = "提示：输入合法"
+				errPasswd.className = "success";
+				return true;
+			}
+		}
+		//确认密码 
+		function ConfirmPassword() {
+			var userpasswd = document.getElementById('userPasword');
+			var userConPassword = document.getElementById('userConfirmPasword');
+			var errConPasswd = document.getElementById('tipConPassword');
+			if ((userpasswd.value) != (userConPassword.value)
+					|| userConPassword.value.length == 0) {
+				errConPasswd.innerHTML = "提示：两次输入的密码不一致"
+				errConPasswd.className = "error"
+				return false;
+			} else {
+				errConPasswd.innerHTML = "提示：输入合法"
+				errConPasswd.className = "success";
+				return true;
+			}
+		}
+
+		function tipCode() {
+			var code = document.getElementById('code');
+			code.innerHTML = "提示：不区分大小写"
+			code.className = "tipUser"
+		}
+		function inCode() {
+			var code = document.getElementById('code');
+			code.innerHTML = ""
+		}
+
+		$("#protocol").click(function() {
+			var flag = document.getElementById("protocol").checked;
+			if (flag) {
+				document.getElementById("button").disabled = "";
+			} else {
+				document.getElementById("button").disabled = "disabled";
+			}
+		})
+	</script>
+	<script th:inline="javascript">
+		$(".reloadImage").click(
+				function() {
+					//获取当前的时间作为参数，无具体意义
+					var timenow = new Date().getTime();
+					$('#reloadImage').attr("src",
+							"/user/getImage.htm?date=" + timenow);
+				});
+	</script>
+</body>
+</html>

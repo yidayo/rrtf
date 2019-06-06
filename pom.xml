@@ -46,12 +46,12 @@
 	</dependencies>
 	<modules>
 		<module>rrtf-lesson</module>
-    <module>rrtf-atry</module>
-    <module>rrtf-user</module>
-    <module>rrtf-group</module>
-    <module>rrtf-flcb</module>
-      <module>rrtf-eureka-server</module>
-  <module>rrtf-eureka-server2</module>
-    <module>rrtf-tuofuren-one</module>
+		<module>rrtf-atry</module>
+		<module>rrtf-user</module>
+		<module>rrtf-group</module>
+		<module>rrtf-flcb</module>
+		<module>rrtf-eureka-server</module>
+		<module>rrtf-tuofuren-one</module>
+    <module>rrtf-zuul</module>
   </modules>
 </project>

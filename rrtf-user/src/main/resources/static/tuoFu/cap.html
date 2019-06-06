@@ -1,0 +1,29 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>yzm</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="j/jquery.min.js"></script>
+</head>
+
+<body>
+<form method="post" action="/code/validate">
+    <div class="p-new-in">
+        <span class="p-new-inname">验证码</span>
+        <input type="text" name="yzmCode" class="p-new-input p-new-w177" placeholder="请输入图片验证码"/>
+    <span class="p-new-code l-mar-r15"> <img src="user/getImage.htm" class="reloadImage" id="reloadImage"
+                                             width="121" height="40"/> </span>
+        <a href="javaScript:;" class="l-color9 reloadImage">看不清楚，换一张</a>
+        <input type="submit" value="验证" style="color: red;"/>
+    </div>
+</form>
+</body>
+
+<script src="j/jquery.min.js"></script>
+<script th:inline="javascript">
+    $(".reloadImage").click(function () {
+        //获取当前的时间作为参数，无具体意义
+        var timenow = new Date().getTime();
+        $('#reloadImage').attr("src", "/security/getImage.htm?date=" + timenow);
+    });
+</script>
+</html>
