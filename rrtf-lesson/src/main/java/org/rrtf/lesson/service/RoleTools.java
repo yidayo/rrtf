@@ -61,7 +61,7 @@ public class RoleTools {
 	}
 	//基础,获取userId
 	private int getUserId() {
-		addCookie();//创建cookie,测试用
+		//addCookie();//创建cookie,测试用
 		String username = readCookie("name");//从cookie中获取-username为"user"
 		if(username!=null) {
 			User user = getUser(username);
@@ -122,22 +122,22 @@ public class RoleTools {
 	}
 	//偷懒,看是否登陆(这里的name后期要改)
 	public boolean isLanding() {
-		addCookie();//创建cookie,临时方法
-		String username = readCookie("name");//从cookie中获取-username为"user"
+		//addCookie();//创建cookie,临时方法
+		String username = readCookie("user");//从cookie中获取-username为"user"
 		System.out.println(username!=null&&getUser(username)!=null);
 		return username!=null&&getUser(username)!=null;//两个都非空则处于登录状态
 	}
 	//偷懒,看是否管理员(这里的name2后期要改)
 	public boolean isAdmin() {
-		addCookie2();//创建cookie,临时方法
-		String adminname = readCookie("name2");
-		System.out.println(adminname);
-		System.out.println(getUser(adminname));
+		//addCookie2();//创建cookie,临时方法
+		String adminname = readCookie("user");
+		System.out.println("adminname"+adminname);
+		System.out.println("getUser"+getUser(adminname));
 		boolean isAdmin = adminname!=null&&getUser(adminname)!=null;
 		System.out.println("是管理员吗?"+isAdmin);
 		return isAdmin;//两个都非空是管理员
 	}
-	//临时方法添加cookie
+	/*//临时方法添加cookie
 	public void addCookie() {
 		Cookie cookie = new Cookie("name", "user");//(key,value)
 	    cookie.setPath("/");// 这个要设置
@@ -152,5 +152,5 @@ public class RoleTools {
 	    cookie.setMaxAge(365 * 24 * 60 * 60);// 不设置的话，则cookies不写入硬盘,而是写在内存,只在当前页面有用,以秒为单位
 	    //cookie.setMaxAge(0);
 	    response.addCookie(cookie);//添加Cookie
-	}
+	}*/
 }
